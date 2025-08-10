@@ -34,3 +34,4 @@ NEXT_PUBLIC_EMERGENCY_TEL=112
 - Ngarkimi i fotove përfshihet në prompt si base64; për vizion të vërtetë mund të kaloni te inputi i imazhit në API.
 - Zëvendësoni heuristikën e thjeshtë të rrezikut me një tool/function që kthen JSON `{ risk, specialty, reply }` nëse dëshironi.
 - Ky nuk është pajisje mjekësore dhe nuk zëvendëson mjekun.
+- 
