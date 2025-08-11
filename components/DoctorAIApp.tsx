@@ -79,10 +79,10 @@ Ton i ngrohtë, njerëzor, pa frikësim. Mos përsërit njëjtat pika. Mos vendo
   const riskBadge = (r: RiskLevel | null) => {
     if (!r) return null;
     const map: Record<RiskLevel, { label: string; tone: string }> = {
-      low: { label: "Rrezik i ulët", tone: "bg-emerald-100 text-emerald-700 border-emerald-200" },
-      moderate: { label: "Rrezik i moderuar", tone: "bg-amber-100 text-amber-700 border-amber-200" },
-      high: { label: "Rrezik i lartë", tone: "bg-orange-100 text-orange-700 border-orange-200" },
-      emergency: { label: "Emergjencë", tone: "bg-red-100 text-red-700 border-red-200" },
+  low:       { label: "Rrezik i ulët",     tone: "bg-teal-50 text-teal-700 border-teal-200" },
+  moderate:  { label: "Rrezik i moderuar", tone: "bg-amber-50 text-amber-700 border-amber-200" },
+  high:      { label: "Rrezik i lartë",    tone: "bg-orange-50 text-orange-700 border-orange-200" },
+  emergency: { label: "Emergjencë",        tone: "bg-rose-50 text-rose-700 border-rose-200" },
     };
     const s = map[r];
     return <Badge className={s.tone + " font-medium"}>{s.label}</Badge>;
@@ -117,27 +117,34 @@ Ton i ngrohtë, njerëzor, pa frikësim. Mos përsërit njëjtat pika. Mos vendo
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white text-slate-900">
-      <header className="sticky top-0 z-30 border-b bg-white/70 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-white">
-              <Stethoscope className="h-5 w-5"/>
-            </div>
-            <div>
-              <div className="text-xl font-semibold">Doctor AI</div>
-              <div className="text-xs text-slate-500">Triazhë simptomash & udhëzime</div>
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <a href={`tel:${emergencyTel}`} className="hidden md:block">
-              <Button variant="destructive" className="rounded-2xl"><PhoneCall className="mr-2 h-4 w-4"/> Emergjenca {emergencyTel}</Button>
-            </a>
-            {riskBadge(risk)}
-          </div>
-        </div>
-      </header>
+     <header className="sticky top-0 z-30 border-b border-white/70 bg-white/60 backdrop-blur-md">
+  <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+    <div className="flex items-center gap-3">
+      <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-teal-600 text-white shadow-sm">
+        {/* Simple medical cross icon */}
+        <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden>
+          <path fill="currentColor" d="M11 2a1 1 0 0 1 2 0v5h5a1 1 0 1 1 0 2h-5v5a1 1 0 1 1-2 0V9H6A1 1 0 1 1 6 7h5z"/>
+        </svg>
+      </div>
+      <div>
+        <div className="text-xl font-semibold tracking-tight">Doctor AI</div>
+        <div className="text-xs text-slate-500">Triazhë e kujdesshme, stil spitali</div>
+      </div>
+    </div>
+    <div className="flex items-center gap-3">
+      <a href={`tel:${emergencyTel}`} className="hidden md:block">
+        <Button variant="destructive" className="rounded-3xl animate-[pulse_2s_ease-in-out_infinite]">
+          <span className="mr-2 inline-block h-2 w-2 rounded-full bg-white/90" />
+          Emergjenca {emergencyTel}
+        </Button>
+      </a>
+      {riskBadge(risk)}
+    </div>
+  </div>
+</header>
 
-      <main className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-4 py-6 md:grid-cols-2">
+
+      <main className="relative mx-auto grid max-w-6xl grid-cols-1 gap-6 px-4 py-8 md:grid-cols-2">
         <section>
           <Card>
             <CardHeader className="pb-2">
@@ -168,8 +175,9 @@ Ton i ngrohtë, njerëzor, pa frikësim. Mos përsërit njëjtat pika. Mos vendo
                 <div className="flex gap-2">
                   <Input placeholder="p.sh. Tiranë" value={location} onChange={(e) => setLocation(e.target.value)} />
                   <a href={mapsHref} target="_blank" rel="noreferrer">
-                    <Button variant="secondary" className="rounded-2xl"><MapPin className="mr-2 h-4 w-4"/> Gjej mjekë</Button>
-                  </a>
+                    <Button variant="secondary" className="rounded-3xl">
+                      <MapPin className="mr-2 h-4 w-4" /> Gjej mjekë</Button>
+                 </a>
                 </div>
               </div>
 
